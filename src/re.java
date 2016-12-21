@@ -12,9 +12,9 @@ public class re {
 	}
 class MainFrame3 extends JFrame{
 	private JLabel la=new JLabel("");
-	private JLabel n=new JLabel("ID:",JLabel.CENTER);
+	private JLabel n=new JLabel("Member ID:",JLabel.CENTER);
 	private JTextField tf=new JTextField();
-	private JLabel isbn=new JLabel("ISBN:",JLabel.CENTER);
+	private JLabel isbn=new JLabel("Book's ISBN:",JLabel.CENTER);
 	private JTextField tf1=new JTextField();
 	private JButton t =new JButton("Return");
 	private JButton e =new JButton("Exit");
