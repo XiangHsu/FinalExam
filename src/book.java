@@ -48,25 +48,24 @@ public class book {
 				});
 				a.addActionListener(new ActionListener(){
 			          public void actionPerformed(ActionEvent ae){
-			         //mf4.setVisible(false);
-                      // add cc= new add();
+			         
 				}
 				});
 				r.addActionListener(new ActionListener(){
 			          public void actionPerformed(ActionEvent ae){
-			        // mf4.setVisible(false);
+			        
                     
 				}
 				});
 				s.addActionListener(new ActionListener(){
 			          public void actionPerformed(ActionEvent ae){
-			        // mf4.setVisible(false);
+			        
                     
 				}
 				});
 				t.addActionListener(new ActionListener(){
 			          public void actionPerformed(ActionEvent ae){
-			        // mf4.setVisible(false);
+			        
                   
 				}
 				});
