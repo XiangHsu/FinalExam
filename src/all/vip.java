@@ -48,20 +48,17 @@ public class vip {
 				});
 				a.addActionListener(new ActionListener(){
 			          public void actionPerformed(ActionEvent ae){
-			        	  MainFrame4.this.setVisible(false);
 			 			  add.setVisible(true);
 				}
 				});
 				r.addActionListener(new ActionListener(){
 			          public void actionPerformed(ActionEvent ae){
-			        	  MainFrame4.this.setVisible(false);
 			 			  remove.setVisible(true);
                     
 				}
 				});
 				s.addActionListener(new ActionListener(){
 			          public void actionPerformed(ActionEvent ae){
-			        	  MainFrame4.this.setVisible(false);
 			 			  search.setVisible(true);
                     
 				}
@@ -133,8 +130,6 @@ public class vip {
 				jbtnc.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent ae){
 						  add.dispose();
-			              MainFrame4 mf4 = new MainFrame4();
-			 			  mf4.setVisible(true);
 					}
 				});
 			}
@@ -195,8 +190,6 @@ public class vip {
 				jbtnc.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent ae){
 						  remove.dispose();
-			              MainFrame4 mf4 = new MainFrame4();
-			 			  mf4.setVisible(true);
 					}
 				});
 			}
@@ -256,8 +249,6 @@ public class vip {
 				jbtnc.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent ae){
 						  search.dispose();
-			              MainFrame4 mf4 = new MainFrame4();
-			 			  mf4.setVisible(true);
 					}
 				});
 			}

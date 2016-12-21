@@ -51,13 +51,12 @@ public class book {
 				});
 				a.addActionListener(new ActionListener(){
 			          public void actionPerformed(ActionEvent ae){
-			         add.setVisible(true);
+			              add.setVisible(true);
 				}
 				});
 				r.addActionListener(new ActionListener(){
 			          public void actionPerformed(ActionEvent ae){
-			        
-			        	 remove.setVisible(true);
+			        	  remove.setVisible(true);
 				}
 				});
 				s.addActionListener(new ActionListener(){
@@ -131,8 +130,6 @@ public class book {
 					e.addActionListener(new ActionListener(){
 			             public void actionPerformed(ActionEvent ae){
 			            	 add.this.dispose();
-			            	 MainFrame5 mf5 = new MainFrame5();
-			 				 mf5.setVisible(true);
 			            }
 			        });
 					a.addActionListener(new ActionListener(){
@@ -189,8 +186,6 @@ public class book {
 					e.addActionListener(new ActionListener(){
 			             public void actionPerformed(ActionEvent ae){
 			            	 remove.this.dispose();
-			            	 MainFrame5 mf5 = new MainFrame5();
-			 				 mf5.setVisible(true);
 			            }
 			        });
 					r.addActionListener(new ActionListener(){
@@ -247,8 +242,6 @@ public class book {
 					e.addActionListener(new ActionListener(){
 			             public void actionPerformed(ActionEvent ae){
 			            	 search.this.dispose();
-			            	 MainFrame5 mf5 = new MainFrame5();
-			 				 mf5.setVisible(true);
 			            }
 			        });
 					s.addActionListener(new ActionListener(){
