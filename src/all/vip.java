@@ -1,3 +1,4 @@
+package all;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -10,7 +11,7 @@ public class vip {
 		mf4.setVisible(true);
 	}
 }
-		class MainFrame4 extends JFrame{
+  class MainFrame4 extends JFrame{
 			private JLabel lab=new JLabel("VIP");
 			private JLabel la=new JLabel();
 			private JButton a=new JButton("Add");
@@ -46,19 +47,18 @@ public class vip {
 				});
 				a.addActionListener(new ActionListener(){
 			          public void actionPerformed(ActionEvent ae){
-			         //mf4.setVisible(false);
-                      // add cc= new add();
+			         
 				}
 				});
 				r.addActionListener(new ActionListener(){
 			          public void actionPerformed(ActionEvent ae){
-			        // mf4.setVisible(false);
+			       
                     
 				}
 				});
 				s.addActionListener(new ActionListener(){
 			          public void actionPerformed(ActionEvent ae){
-			        // mf4.setVisible(false);
+			        
                     
 				}
 				});
@@ -74,27 +74,4 @@ public class vip {
 		        this.add(p2,BorderLayout.SOUTH);
 			}
 		}
-	/*	
-		class add extends Frame{
-			private Button e =new Button("Exit");
-			public add(){
-				initComp();
-			}
-			private void initComp(){
-				this.setTitle("Library System");
-				this.setLayout(new BorderLayout(3,3));
-				this.setLocation(550,330);
-				this.setSize(700, 400);	
-				this.addWindowListener(new WindowAdapter(){
-					public void windowClosing(WindowEvent we){
-						System.exit(0);
-					}
-				});
-				e.addActionListener(new ActionListener(){
-			          public void actionPerformed(ActionEvent ae){
-							System.exit(0);
-				}
-				});
-				this.add(e);
-			}
-		}*/
+	

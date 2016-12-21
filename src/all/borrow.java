@@ -1,3 +1,4 @@
+package all;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -10,7 +11,7 @@ public class borrow {
 		mf2.setVisible(true);
 	}
 	}
-class MainFrame2 extends JFrame{
+ class MainFrame2 extends JFrame{
 	private JLabel la=new JLabel("");
 	private JLabel n=new JLabel("Member ID:",JLabel.CENTER);
 	private JTextField tf=new JTextField();

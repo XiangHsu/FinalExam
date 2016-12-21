@@ -1,3 +1,5 @@
+package all;
+
 public class bookdb {
 
 	private String name,isbn,publisher;

@@ -1,11 +1,13 @@
+package all;
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.print.Book;
 import java.awt.color.*;
-
 import javax.swing.*;
 
-public class main {
+
+public class main extends Book{
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

@@ -1,3 +1,4 @@
+package all;
 public class vipdb {
 
 	private String id,pw;
@@ -22,7 +23,7 @@ public class vipdb {
 	public String getIsbn() {return pw;}
 	public void showAll(){
 		System.out.println("- - - - - - - - - - - - - - - -");
-		System.out.println(id+"感謝您加入會員。");
+		System.out.println(id+"??��?�您??�入??�員??");
 		System.out.println("- - - - - - - - - - - - - - - -");
 	}
 }

@@ -1,3 +1,4 @@
+package all;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -10,7 +11,7 @@ public class re {
 		mf3.setVisible(true);
 	}
 	}
-class MainFrame3 extends JFrame{
+ class MainFrame3 extends JFrame{
 	private JLabel la=new JLabel("");
 	private JLabel n=new JLabel("Member ID:",JLabel.CENTER);
 	private JTextField tf=new JTextField();
