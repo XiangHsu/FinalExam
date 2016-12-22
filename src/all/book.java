@@ -51,22 +51,26 @@ public class book {
 				});
 				a.addActionListener(new ActionListener(){
 			          public void actionPerformed(ActionEvent ae){
+			        	  MainFrame5.this.setVisible(false);
 			              add.setVisible(true);
 				}
 				});
 				r.addActionListener(new ActionListener(){
 			          public void actionPerformed(ActionEvent ae){
+			        	  MainFrame5.this.setVisible(false);
 			        	  remove.setVisible(true);
 				}
 				});
 				s.addActionListener(new ActionListener(){
 			          public void actionPerformed(ActionEvent ae){
+			        	  MainFrame5.this.setVisible(false);
 			        	  search.setVisible(true);
                     
 				}
 				});
 				t.addActionListener(new ActionListener(){
 			          public void actionPerformed(ActionEvent ae){
+			        	  MainFrame5.this.setVisible(false);
 			        	  track.setVisible(true);
                   
 				}
@@ -130,6 +134,7 @@ public class book {
 					e.addActionListener(new ActionListener(){
 			             public void actionPerformed(ActionEvent ae){
 			            	 add.this.dispose();
+			            	 MainFrame5.this.setVisible(true);
 			            }
 			        });
 					a.addActionListener(new ActionListener(){
@@ -186,6 +191,7 @@ public class book {
 					e.addActionListener(new ActionListener(){
 			             public void actionPerformed(ActionEvent ae){
 			            	 remove.this.dispose();
+			            	 MainFrame5.this.setVisible(true);
 			            }
 			        });
 					r.addActionListener(new ActionListener(){
@@ -242,6 +248,7 @@ public class book {
 					e.addActionListener(new ActionListener(){
 			             public void actionPerformed(ActionEvent ae){
 			            	 search.this.dispose();
+			            	 MainFrame5.this.setVisible(true);
 			            }
 			        });
 					s.addActionListener(new ActionListener(){
@@ -298,8 +305,7 @@ public class book {
 					e.addActionListener(new ActionListener(){
 			             public void actionPerformed(ActionEvent ae){
 			            	 track.this.dispose();
-			            	 MainFrame5 mf5 = new MainFrame5();
-			 				 mf5.setVisible(true);
+			            	 MainFrame5.this.setVisible(true);
 			            }
 			        });
 					t.addActionListener(new ActionListener(){
