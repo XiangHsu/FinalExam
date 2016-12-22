@@ -1,13 +1,8 @@
 package all;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Scanner;
-
+import java.util.*;
 import javax.swing.*;
-
-import all.MainFrame5.add;
-import all.MainFrame5.remove;
-import all.MainFrame5.search;
 
 public class vip {
 
@@ -27,6 +22,7 @@ public class vip {
 			private JPanel p=new JPanel();
 			private JPanel p1=new JPanel();
 			private JPanel p2=new JPanel();
+			ArrayList<vipdb> vip =new ArrayList<vipdb>();
 			public MainFrame4(){
 				initComp();
 			}
@@ -34,8 +30,7 @@ public class vip {
 			private void initComp(){
 				this.setTitle("Library System");
 				this.setLayout(new BorderLayout(3,3));
-				this.setLocation(550,330);
-				this.setSize(700, 400);	
+				this.setBounds(550,330,700,400);
 				this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				this.addWindowListener(new WindowAdapter() {
 					public void windowClosing(WindowEvent we) {
@@ -83,174 +78,187 @@ public class vip {
 			}
 		
 			add add=new add();
-			class add extends JFrame{
-				private JLabel la=new JLabel("");
-				private JLabel n=new JLabel("Book's Name:",JLabel.CENTER);
-				private JTextField tf=new JTextField();
-				private JLabel isbn=new JLabel("Book's ISBN:",JLabel.CENTER);
-				private JTextField tf1=new JTextField();
-				private JButton a =new JButton("Add");
-				private JButton e =new JButton("Exit");
-				private JTextArea ta=new JTextArea();
-				private JPanel p=new JPanel();
-				private JPanel p1=new JPanel();
-				private JPanel p2=new JPanel();
-				private JPanel p3=new JPanel();
-				private JPanel p4=new JPanel();
-				Scanner scn = new Scanner(System.in);
+			class add extends JFrame {
+				 private JLabel jlbid = new JLabel("Member ID:",JLabel.CENTER);
+				 private JLabel jlbpw = new JLabel("Password:",JLabel.CENTER);
+				 private JTextField jtfid = new JTextField();
+				 private JTextField jtfpw = new JTextField();
+				 private JButton jbtnok = new JButton("OK");
+				 private JButton jbtnc = new JButton("CANCEL");
+				 private JPanel jpn1 = new JPanel();
+				 private JPanel jpn2 = new JPanel();
+				 private JPanel jpn3 = new JPanel();
+				 private JPanel jpn4 = new JPanel();
+				 String id , pw;
 				
 				public add(){
 					initComp();
 				}
-				
 				private void initComp(){
 					this.setTitle("Library System");
-					this.setLayout(new BorderLayout(5,5));
-					this.setLocation(550,330);
-					this.setSize(700, 400);	
-					p.setLayout(new GridLayout(3,1,50,50));
-					p1.setLayout(new GridLayout(1,2,5,5));
-					p1.add(n);
-					p1.add(tf);
-					p2.setLayout(new GridLayout(1,2,5,5));
-					p2.add(isbn);
-					p2.add(tf1);
-					p3.setLayout(new GridLayout(1,2,5,5));
-					p3.add(a);
-					p3.add(e);
-					p.add(p1);
-					p.add(p2);
-					p.add(p3);
-					this.add(p,BorderLayout.NORTH);
-					this.add(ta,BorderLayout.SOUTH);
+					this.setLayout(new BorderLayout(1,2));
+					this.setBounds(550,330,700,400);
 					this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+					this.addWindowListener(new WindowAdapter() {
+						public void windowClosing(WindowEvent we) {
+							MainFrame4 mf4 = new MainFrame4();
+							mf4.setVisible(true);
+						}
+					});
+					this.add(jpn1, BorderLayout.NORTH);
+					jpn1.setLayout(new GridLayout(2,1,50,50));
 					
-					e.addActionListener(new ActionListener(){
-			             public void actionPerformed(ActionEvent ae){
-			            	 add.this.dispose();
-			            	 MainFrame4.this.setVisible(true);
-			            }
-			        });
-					a.addActionListener(new ActionListener(){
-			             public void actionPerformed(ActionEvent ae){
-			            	 
-			            }
-			        });
-
-		}
+					jpn1.add(jpn2);
+					jpn2.setLayout(new GridLayout(1,2,5,5));
+					jpn2.add(jlbid);
+					jpn2.add(jtfid);
+					
+					jpn1.add(jpn3);
+					jpn3.setLayout(new GridLayout(1,2,5,5));
+					jpn3.add(jlbpw);
+					jpn3.add(jtfpw);
+					
+					this.add(jpn4, BorderLayout.SOUTH);
+					jpn4.setLayout(new GridLayout(1,2,5,5));
+					jpn4.add(jbtnok);
+					jbtnok.addActionListener(new ActionListener(){
+						public void actionPerformed(ActionEvent ae){
+							id = jtfid.getText();
+							pw = jtfpw.getText();
+							//System.out.println(id+pw);
+						}
+					});
+					jpn4.add(jbtnc);
+					jbtnc.addActionListener(new ActionListener(){
+						public void actionPerformed(ActionEvent ae){
+							  add.dispose();
+				              MainFrame4 mf4 = new MainFrame4();
+				 			  mf4.setVisible(true);
+						}
+					});
+				}
 			}
-			remove remove=new remove();
-			class remove extends JFrame{
-				private JLabel la=new JLabel("");
-				private JLabel n=new JLabel("Book's Name:",JLabel.CENTER);
-				private JTextField tf=new JTextField();
-				private JLabel isbn=new JLabel("Book's ISBN:",JLabel.CENTER);
-				private JTextField tf1=new JTextField();
-				private JButton r =new JButton("Remove");
-				private JButton e =new JButton("Exit");
-				private JTextArea ta=new JTextArea();
-				private JPanel p=new JPanel();
-				private JPanel p1=new JPanel();
-				private JPanel p2=new JPanel();
-				private JPanel p3=new JPanel();
-				private JPanel p4=new JPanel();
-				Scanner scn = new Scanner(System.in);
+			
+			remove remove = new remove();
+			class remove extends JFrame {
+				 private JLabel jlbid = new JLabel("Member ID:",JLabel.CENTER);
+				 private JLabel jlbpw = new JLabel("Password:",JLabel.CENTER);
+				 private JTextField jtfid = new JTextField();
+				 private JTextField jtfpw = new JTextField();
+				 private JButton jbtnok = new JButton("OK");
+				 private JButton jbtnc = new JButton("CANCEL");
+				 private JPanel jpn1 = new JPanel();
+				 private JPanel jpn2 = new JPanel();
+				 private JPanel jpn3 = new JPanel();
+				 private JPanel jpn4 = new JPanel();
+				 String id , pw;
 				
 				public remove(){
 					initComp();
 				}
-				
 				private void initComp(){
 					this.setTitle("Library System");
-					this.setLayout(new BorderLayout(5,5));
-					this.setLocation(550,330);
-					this.setSize(700, 400);	
-					p.setLayout(new GridLayout(3,1,50,50));
-					p1.setLayout(new GridLayout(1,2,5,5));
-					p1.add(n);
-					p1.add(tf);
-					p2.setLayout(new GridLayout(1,2,5,5));
-					p2.add(isbn);
-					p2.add(tf1);
-					p3.setLayout(new GridLayout(1,2,5,5));
-					p3.add(r);
-					p3.add(e);
-					p.add(p1);
-					p.add(p2);
-					p.add(p3);
-					this.add(p,BorderLayout.NORTH);
-					this.add(ta,BorderLayout.SOUTH);
+					this.setLayout(new BorderLayout(1,2));
+					this.setBounds(550,330,700,400);
 					this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+					this.addWindowListener(new WindowAdapter() {
+						public void windowClosing(WindowEvent we) {
+							MainFrame4 mf4 = new MainFrame4();
+							mf4.setVisible(true);
+						}
+					});
+					this.add(jpn1, BorderLayout.NORTH);
+					jpn1.setLayout(new GridLayout(2,1,50,50));
 					
-					e.addActionListener(new ActionListener(){
-			             public void actionPerformed(ActionEvent ae){
-			            	 remove.this.dispose();
-			            	 MainFrame4.this.setVisible(true);
-			            }
-			        });
-					r.addActionListener(new ActionListener(){
-			             public void actionPerformed(ActionEvent ae){
-			            	 
-			            }
-			        });
-
-		}
-			}
-			search search=new search();
-			class search extends JFrame{
-				private JLabel la=new JLabel("");
-				private JLabel n=new JLabel("Book's Name:",JLabel.CENTER);
-				private JTextField tf=new JTextField();
-				private JLabel isbn=new JLabel("Book's ISBN:",JLabel.CENTER);
-				private JTextField tf1=new JTextField();
-				private JButton s =new JButton("Search");
-				private JButton e =new JButton("Exit");
-				private JTextArea ta=new JTextArea();
-				private JPanel p=new JPanel();
-				private JPanel p1=new JPanel();
-				private JPanel p2=new JPanel();
-				private JPanel p3=new JPanel();
-				private JPanel p4=new JPanel();
-				Scanner scn = new Scanner(System.in);
+					jpn1.add(jpn2);
+					jpn2.setLayout(new GridLayout(1,2,5,5));
+					jpn2.add(jlbid);
+					jpn2.add(jtfid);
+					
+					jpn1.add(jpn3);
+					jpn3.setLayout(new GridLayout(1,2,5,5));
+					jpn3.add(jlbpw);
+					jpn3.add(jtfpw);
+					
+					this.add(jpn4, BorderLayout.SOUTH);
+					jpn4.setLayout(new GridLayout(1,2,5,5));
+					jpn4.add(jbtnok);
+					jbtnok.addActionListener(new ActionListener(){
+						public void actionPerformed(ActionEvent ae){
+							id = jtfid.getText();
+							pw = jtfpw.getText();
+							//System.out.println(id+pw);
+						}
+					});
+					jpn4.add(jbtnc);
+					jbtnc.addActionListener(new ActionListener(){
+						public void actionPerformed(ActionEvent ae){
+							  remove.dispose();
+				              MainFrame4 mf4 = new MainFrame4();
+				 			  mf4.setVisible(true);
+						}
+					});
+				}
+	}
+			search search = new search();
+			class search extends JFrame {
+				 private JLabel jlbid = new JLabel("Member ID:",JLabel.CENTER);
+				 private JLabel jlbpw = new JLabel("Password:",JLabel.CENTER);
+				 private JTextField jtfid = new JTextField();
+				 private JTextField jtfpw = new JTextField();
+				 private JButton jbtnok = new JButton("OK");
+				 private JButton jbtnc = new JButton("CANCEL");
+				 private JPanel jpn1 = new JPanel();
+				 private JPanel jpn2 = new JPanel();
+				 private JPanel jpn3 = new JPanel();
+				 private JPanel jpn4 = new JPanel();
+				 String id , pw;
 				
 				public search(){
 					initComp();
 				}
-				
 				private void initComp(){
 					this.setTitle("Library System");
-					this.setLayout(new BorderLayout(5,5));
-					this.setLocation(550,330);
-					this.setSize(700, 400);	
-					p.setLayout(new GridLayout(3,1,50,50));
-					p1.setLayout(new GridLayout(1,2,5,5));
-					p1.add(n);
-					p1.add(tf);
-					p2.setLayout(new GridLayout(1,2,5,5));
-					p2.add(isbn);
-					p2.add(tf1);
-					p3.setLayout(new GridLayout(1,2,5,5));
-					p3.add(s);
-					p3.add(e);
-					p.add(p1);
-					p.add(p2);
-					p.add(p3);
-					this.add(p,BorderLayout.NORTH);
-					this.add(ta,BorderLayout.SOUTH);
+					this.setLayout(new BorderLayout(1,2));
+					this.setBounds(550,330,700,400);
 					this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+					this.addWindowListener(new WindowAdapter() {
+						public void windowClosing(WindowEvent we) {
+							MainFrame4 mf4 = new MainFrame4();
+							mf4.setVisible(true);
+						}
+					});
+					this.add(jpn1, BorderLayout.NORTH);
+					jpn1.setLayout(new GridLayout(2,1,50,50));
 					
-					e.addActionListener(new ActionListener(){
-			             public void actionPerformed(ActionEvent ae){
-			            	 search.this.dispose();
-			            	 MainFrame4.this.setVisible(true);
-			            }
-			        });
-					s.addActionListener(new ActionListener(){
-			             public void actionPerformed(ActionEvent ae){
-			            	 
-			            }
-			        });
-
-		}
+					jpn1.add(jpn2);
+					jpn2.setLayout(new GridLayout(1,2,5,5));
+					jpn2.add(jlbid);
+					jpn2.add(jtfid);
+					
+					jpn1.add(jpn3);
+					jpn3.setLayout(new GridLayout(1,2,5,5));
+					jpn3.add(jlbpw);
+					jpn3.add(jtfpw);
+					
+					this.add(jpn4, BorderLayout.SOUTH);
+					jpn4.setLayout(new GridLayout(1,2,5,5));
+					jpn4.add(jbtnok);
+					jbtnok.addActionListener(new ActionListener(){
+						public void actionPerformed(ActionEvent ae){
+							id = jtfid.getText();
+							pw = jtfpw.getText();
+							//System.out.println(id+pw);
+						}
+					});
+					jpn4.add(jbtnc);
+					jbtnc.addActionListener(new ActionListener(){
+						public void actionPerformed(ActionEvent ae){
+							  search.dispose();
+				              MainFrame4 mf4 = new MainFrame4();
+				 			  mf4.setVisible(true);
+						}
+					});
+				}
 			}
-		}
+			}

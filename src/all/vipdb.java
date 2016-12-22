@@ -22,8 +22,8 @@ public class vipdb {
 	public String getName() {return id;}
 	public String getIsbn() {return pw;}
 	public void showAll(){
-		System.out.println("- - - - - - - - - - - - - - - -");
-		System.out.println(id+"??Ÿè?æ‚¨?? å…¥??ƒå“¡??");
-		System.out.println("- - - - - - - - - - - - - - - -");
+		//System.out.println("- - - - - - - - - - - - - - - -");
+		//System.out.println(id+"??ï¿½ï¿½?ï¿½æ‚¨??ï¿½å…¥??ï¿½å“¡??");
+		//System.out.println("- - - - - - - - - - - - - - - -");
 	}
 }
