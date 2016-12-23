@@ -123,8 +123,12 @@ public class vip {
 					jpn4.add(jbtnok);
 					jbtnok.addActionListener(new ActionListener(){
 						public void actionPerformed(ActionEvent ae){
-							id = jtfid.getText();
-							pw = jtfpw.getText();
+							vip.add(new vipdb(jtfid.getText(),jtfpw.getText()));
+							for(vipdb i:vip){
+							     System.out.println(i.getid()+i.getpw());
+							    }
+							//id = jtfid.getText();
+							//pw = jtfpw.getText();
 							//System.out.println(id+pw);
 						}
 					});
@@ -246,8 +250,12 @@ public class vip {
 					jpn4.add(jbtnok);
 					jbtnok.addActionListener(new ActionListener(){
 						public void actionPerformed(ActionEvent ae){
-							id = jtfid.getText();
-							pw = jtfpw.getText();
+							//vip.add(new vipdb(jtfid.getText(),jtfpw.getText()));
+							//for(vipdb i:vip){
+							    // System.out.println(i.getid()+i.getpw());
+							    //}
+							//id = jtfid.getText();
+							//pw = jtfpw.getText();
 							//System.out.println(id+pw);
 						}
 					});
