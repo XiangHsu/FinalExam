@@ -5,6 +5,7 @@ import java.awt.event.*;
 import java.awt.print.Book;
 import java.awt.color.*;
 import javax.swing.*;
+import java.sql.*;
 
 
 public class main extends Book{
@@ -16,6 +17,9 @@ public class main extends Book{
 	}
 }
 		class MainFrame extends JFrame{
+			/*private Container cp;
+			private Container jifcp;
+			private JScrollPane jsp;*/
 			private JLabel lab=new JLabel("Main",JLabel.CENTER);
 			private JLabel la=new JLabel("");
 			private JButton b =new JButton("Borrow");
