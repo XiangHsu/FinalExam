@@ -36,7 +36,7 @@ public class main {
 	private Container jifcp;
 	private JScrollPane jsp;
 	private JPanel jpnt;
-	private JButton jbtnConnDB=new JButton("Welcome");
+	private JButton jbtnConnDB=new JButton("Welcome"+"     "+"Library"+"     "+"System");
 	//private JButton jbtnShowData=new JButton("Show Data");
 	//private JButton jbtnExit=new JButton("Exit");
 	private JDesktopPane jdp=new JDesktopPane();
