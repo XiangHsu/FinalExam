@@ -22,7 +22,6 @@ public class vip {
 			private JPanel p=new JPanel();
 			private JPanel p1=new JPanel();
 			private JPanel p2=new JPanel();
-			ArrayList<vipdb> vip =new ArrayList<vipdb>();
 			public MainFrame4(){
 				initComp();
 			}
@@ -123,13 +122,7 @@ public class vip {
 					jpn4.add(jbtnok);
 					jbtnok.addActionListener(new ActionListener(){
 						public void actionPerformed(ActionEvent ae){
-							vip.add(new vipdb(jtfid.getText(),jtfpw.getText()));
-							for(vipdb i:vip){
-							     System.out.println(i.getid()+i.getpw());
-							    }
-							//id = jtfid.getText();
-							//pw = jtfpw.getText();
-							//System.out.println(id+pw);
+							
 						}
 					});
 					jpn4.add(jbtnc);
@@ -250,13 +243,7 @@ public class vip {
 					jpn4.add(jbtnok);
 					jbtnok.addActionListener(new ActionListener(){
 						public void actionPerformed(ActionEvent ae){
-							//vip.add(new vipdb(jtfid.getText(),jtfpw.getText()));
-							//for(vipdb i:vip){
-							    // System.out.println(i.getid()+i.getpw());
-							    //}
-							//id = jtfid.getText();
-							//pw = jtfpw.getText();
-							//System.out.println(id+pw);
+							
 						}
 					});
 					jpn4.add(jbtnc);

@@ -11,8 +11,6 @@ public class book {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner scn=new Scanner(System.in);
-		  ArrayList<bookdb> bdb =new ArrayList<bookdb>();
-		  //ArrayList<Course> cou=new ArrayList<Course>();
 		MainFrame5 mf5=new MainFrame5();
 		mf5.setVisible(true);
 	}
