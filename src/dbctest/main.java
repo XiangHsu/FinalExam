@@ -18,7 +18,7 @@ public class main {
 			private JPanel jpnt;
 			private JButton jbtnConnDB=new JButton("Conn. DB");
 			private JButton jbtnShowData=new JButton("Show Data");
-			private JButton jbtnExit=new JButton("Exti");
+			private JButton jbtnExit=new JButton("Exit");
 			private JDesktopPane jdp=new JDesktopPane();
 			private dbc dbconn;
 			private JInternalFrame jtf1;
