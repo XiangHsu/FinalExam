@@ -2,9 +2,13 @@ package all;
 import java.sql.*;
 
 import javax.swing.JOptionPane;
+
+import java.sql.*;
+
+import javax.swing.JOptionPane;
 public class dbc {
 private String driver="com.mysql.jdbc.Driver";
-private String url="jdbc:mysql://120.108.111.149:33380/104021042?useUnicode=true&characterEncoding=utf8";
+private String url="jdbc:mysql://120.108.111.149:33306/104021042?useUnicode=true&characterEncoding=utf8";
 private Connection dbConn;
 private MainFrame mf;
 
@@ -24,7 +28,7 @@ public ResultSet getData(){
 	ResultSet rs=null;
 	try{
 		Statement stm=dbConn.createStatement();
-		String sqlStr="select * from student";
+		String sqlStr="select * from Book";
 		rs=stm.executeQuery(sqlStr);
 	}catch(SQLException ex){
 		JOptionPane.showMessageDialog(mf, ex.toString());
