@@ -4,7 +4,7 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 public class dbc {
 private String driver="com.mysql.jdbc.Driver";
-private String url="jdbc:mysql://120.108.117.245:3306/104021042?useUnicode=true&characterEncoding=utf8";
+private String url="jdbc:mysql://120.108.111.149:33306/104021042?useUnicode=true&characterEncoding=utf8";
 private Connection dbConn;
 private MainFrame mf;
 

@@ -40,7 +40,7 @@ public class main {
 				cp.add(jdp,BorderLayout.CENTER);
 				jpnt.add(jbtnConnDB);
 				jbtnConnDB.addActionListener(new ActionListener(){
-					public void actionPerfomed(ActionEvent ae){
+					public void actionPerformed(ActionEvent ae){
 						dbconnection();
 					if(dbconn != null){
 						jtf1=new JInternalFrame("DB Connected");
@@ -49,12 +49,6 @@ public class main {
 						jdp.add(jtf1);
 						jtf1.setVisible(true);
 					}
-					}
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						// TODO Auto-generated method stub
-						
 					}
 					});
 				jpnt.add(jbtnShowData);
