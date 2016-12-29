@@ -24,7 +24,7 @@ public ResultSet getData(){
 	ResultSet rs=null;
 	try{
 		Statement stm=dbConn.createStatement();
-		String sqlStr="select * from student";
+		String sqlStr="select * from Book";
 		rs=stm.executeQuery(sqlStr);
 	}catch(SQLException ex){
 		JOptionPane.showMessageDialog(mf, ex.toString());
