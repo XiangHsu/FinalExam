@@ -1,90 +1,118 @@
 package all;
-import java.util.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.print.Book;
-import java.awt.color.*;
-import javax.swing.*;
-import java.sql.*;
 
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-public class main extends Book{
+import javax.swing.JButton;
+import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+import all.dbc;
+
+public class main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		MainFrame mf=new MainFrame();
+		Welcome mf=new Welcome();
 		mf.setVisible(true);
 	}
-}
-		class MainFrame extends JFrame{
-			/*private Container cp;
-			private Container jifcp;
-			private JScrollPane jsp;*/
-			private JLabel lab=new JLabel("Main",JLabel.CENTER);
-			private JLabel la=new JLabel("");
-			private JButton b =new JButton("Borrow");
-			private JButton r=new JButton("Return");
-			private JButton v =new JButton("VIP");
-			private JButton bk =new JButton("Books");
-			private JButton e =new JButton("Exit");
-			private JPanel p=new JPanel();
-			private JPanel p1=new JPanel();
-			private JPanel p2=new JPanel();
-			public MainFrame(){
-				initComp();
-			}
-			
-			private void initComp(){
-				this.setTitle("Library System");
-				this.setLayout(new BorderLayout(3,3));
-				this.setLocation(550,330);
-				this.setSize(700, 400);	
-				this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-				
-        e.addActionListener(new ActionListener(){
-          public void actionPerformed(ActionEvent ae){
-				System.exit(0);
+}class Welcome extends JFrame{
+	private Container cp;
+	private Container jifcp;
+	private JScrollPane jsp;
+	private JPanel jpnt;
+	private JButton jbtnConnDB=new JButton("Welcome");
+	//private JButton jbtnShowData=new JButton("Show Data");
+	//private JButton jbtnExit=new JButton("Exit");
+	private JDesktopPane jdp=new JDesktopPane();
+	private dbc dbconn;
+	private JInternalFrame jtf1;
+	private ResultSet rs;
+	private ResultSetMetaData meta;
+	private JTextArea jta=new JTextArea();  
+	
+	public Welcome(){
+		initComp();
 	}
-	});
-        b.addActionListener(new ActionListener(){
-    	 public void actionPerformed(ActionEvent ae){
-    		MainFrame2 borrow = new MainFrame2();
-    		borrow.setVisible(true);
-    		MainFrame.this.setVisible(false);
-    	 }
-    });
-        r.addActionListener(new ActionListener(){
-       	 public void actionPerformed(ActionEvent ae){
-       		MainFrame3 re = new MainFrame3();
-       		re.setVisible(true);
-       		MainFrame.this.setVisible(false);
-       	 }
-    });
-        v.addActionListener(new ActionListener(){
-       	 public void actionPerformed(ActionEvent ae){
-       		MainFrame4 re = new MainFrame4();
-       		re.setVisible(true);
-       		MainFrame.this.setVisible(false);
-       	 }
-    });
-        bk.addActionListener(new ActionListener(){
-       	 public void actionPerformed(ActionEvent ae){
-       		MainFrame5 re = new MainFrame5();
-       		re.setVisible(true);
-       		MainFrame.this.setVisible(false);
-       	 }
-    });
-        p.setLayout(new GridLayout(1,5,50,50));
-        p.add(b);
-        p.add(r);
-        p.add(v);
-        p.add(bk);
-        p.add(e);
-        this.add(p, BorderLayout.CENTER);
-        p1.add(lab);
-        this.add(p1,BorderLayout.NORTH);
-        p2.add(la);
-        this.add(p2,BorderLayout.SOUTH);
-        
+	private void initComp(){
+			cp=getContentPane();
+			setBounds(200,100,600,600);
+			cp.setLayout(new BorderLayout(3,3));
+			//jpnt=new JPanel(new GridLayout(1,4,3,3));
+			this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+			//cp.add(jpnt,BorderLayout.NORTH);
+			//cp.add(jdp,BorderLayout.CENTER);
+			cp.add(jbtnConnDB);
+			jbtnConnDB.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent ae){
+					dbconnection();
+				if(dbconn != null){
+					jtf1=new JInternalFrame("Welcome");
+					jifcp=jtf1.getContentPane();
+					jtf1.setBounds(0,0,400,300);
+					jdp.add(jtf1);
+					jtf1.setVisible(true);
+					Welcome.this.setVisible(false);
+					MainFrame home=new MainFrame();
+					home.setVisible(true);
+				}
+				}
+				});
+			/*jpnt.add(jbtnShowData);
+			jbtnShowData.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent ae){
+				showData();	
+				}
+			});*/
+			
+			/*jpnt.add(jbtnExit);
+			jbtnExit.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent ae){
+					System.exit(0);
+				}
+			});*/
+		}
+		private void dbconnection(){
+			dbconn=new dbc(this,"104021042","19970218");
+		}
+		/*private void showData(){
+			try{
+				rs=dbconn.getData();
+				
+				int colCount=0;
+				if(rs !=null){
+					jsp=new JScrollPane(jta);
+					
+					meta=rs.getMetaData();
+					colCount=meta.getColumnCount();
+					while(rs.next()){
+						String[] record=new String [colCount];
+						for(int i=0;i<colCount;i++){
+							record[i]=rs.getString(i+1);
+							jta.append(record[i]+"\t");
+						}
+						jta.append("\n");
+					}
+					jifcp.add(jsp);
+				}
+			}catch(Exception ex){
+				JOptionPane.showMessageDialog(null, ex.toString());
 			}
+		}*/
 }
+

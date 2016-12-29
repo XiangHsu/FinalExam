@@ -4,15 +4,14 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 
 import java.sql.*;
-
 import javax.swing.JOptionPane;
 public class dbc {
 private String driver="com.mysql.jdbc.Driver";
 private String url="jdbc:mysql://120.108.111.149:33306/104021042?useUnicode=true&characterEncoding=utf8";
 private Connection dbConn;
-private MainFrame mf;
+private Welcome mf;
 
-public dbc(MainFrame mf1,String id,String pw){
+public dbc(Welcome mf1,String id,String pw){
 	mf=mf1;
 	try{
 		Class.forName(driver);
