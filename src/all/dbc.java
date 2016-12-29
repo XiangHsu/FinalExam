@@ -9,6 +9,7 @@ public class dbc {
 private String driver="com.mysql.jdbc.Driver";
 private String url="jdbc:mysql://120.108.111.149:33306/104021042?useUnicode=true&characterEncoding=utf8";
 private Connection dbConn;
+private Statement stm;
 private Welcome mf;
 
 public dbc(Welcome mf1,String id,String pw){
