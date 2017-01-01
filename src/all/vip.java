@@ -1,6 +1,11 @@
 package all;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.*;
 import javax.swing.*;
 
@@ -89,6 +94,7 @@ public class vip {
 				 private JPanel jpn3 = new JPanel();
 				 private JPanel jpn4 = new JPanel();
 				 String id , pw;
+				 private TextArea ta=new TextArea();
 				
 				public add(){
 					initComp();
@@ -116,15 +122,89 @@ public class vip {
 					jpn3.setLayout(new GridLayout(1,2,5,5));
 					jpn3.add(jlbpw);
 					jpn3.add(jtfpw);
-					
+					this.add(ta,BorderLayout.CENTER);
 					this.add(jpn4, BorderLayout.SOUTH);
 					jpn4.setLayout(new GridLayout(1,2,5,5));
 					jpn4.add(jbtnok);
 					jbtnok.addActionListener(new ActionListener(){
 						public void actionPerformed(ActionEvent ae){
-							
-						}
-					});
+							 String driver = "com.mysql.jdbc.Driver";
+
+				              String url = "jdbc:mysql://120.108.111.149:33306/104021042?useUnicode=true&characterEncoding=utf8";
+
+				              String user = "104021042";
+
+				              String password = "19970218";
+			String a=jtfid.getText();
+			String b=jtfpw.getText();
+			//String sqlcreate="CREATE TABLE "+a+"(ID TEXT(20), PW TEXT(20), book TEXT(20))";
+			String sql="select * from Book  where Name='"+b+"'";
+			
+			
+				              Connection conn = null;
+
+				              try {
+
+				                  Class.forName(driver);
+
+				                  conn = DriverManager.getConnection(url, user, password);
+
+				                  if (conn != null && !conn.isClosed()) {
+
+				                      System.out.println("資料庫連線測試成功！");
+
+				                       // 建立 statment 物件
+
+				                        Statement stmt = conn.createStatement();                 
+                                        
+				                        //執行insert語法
+                                      //stmt.executeUpdate(sql);
+				                        //stmt.executeUpdate(sql);                     
+				                         
+				                        
+				                        // 執行 SQL 指令
+
+				                        ResultSet rs=stmt.executeQuery(sql);
+
+				                        //取出資料庫中的資料
+
+				                        while (rs.next()) {                
+
+				                          ta.append(
+
+				                            "ID: " + rs.getString(1) + "\n" +
+
+				                            "PW: " + rs.getString(2) + "\n"  +
+				                            
+				                            "State: "+rs.getString(3) +  "\n"
+
+				                            );
+
+				                        }
+
+				                        stmt.close();
+
+				                        conn.close();
+
+				                  }
+
+				              } catch (ClassNotFoundException e) {
+
+				                  System.out.println("找不到驅動程式類別");
+
+				                  e.printStackTrace();
+
+				              } catch (SQLException e) {
+
+				                  e.printStackTrace();
+
+				              }
+
+				
+
+				          }
+				        });
+
 					jpn4.add(jbtnc);
 					jbtnc.addActionListener(new ActionListener(){
 						public void actionPerformed(ActionEvent ae){

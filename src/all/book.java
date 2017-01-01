@@ -151,7 +151,8 @@ public class book {
 			              String password = "19970218";
 String a=tf.getText();
 String b=tf1.getText();
-String sql="insert into Book(Name,ISBN) values('"+a+"','"+b+"')";
+String sql="insert into Book(Name,ISBN,state) values('"+a+"','"+b+"','館藏')";
+String sqladd="select * from Book where Name='"+a+"'";
 			              Connection conn = null;
 
 			              try {
@@ -175,7 +176,7 @@ String sql="insert into Book(Name,ISBN) values('"+a+"','"+b+"')";
 			                        
 			                        // 執行 SQL 指令
 
-			                        ResultSet rs=stmt.executeQuery("select * from Book");
+			                        ResultSet rs=stmt.executeQuery(sqladd);
 
 			                        //取出資料庫中的資料
 
@@ -185,7 +186,9 @@ String sql="insert into Book(Name,ISBN) values('"+a+"','"+b+"')";
 
 			                            "Name:: " + rs.getString(1) + "\n" +
 
-			                            "ISBN: " + rs.getInt(2) + "\n" 
+			                            "ISBN: " + rs.getString(2) + "\n"  +
+			                            
+			                            "State: "+rs.getString(3) +  "\n"
 
 			                            );
 
@@ -219,7 +222,7 @@ String sql="insert into Book(Name,ISBN) values('"+a+"','"+b+"')";
 			
 			remove remove=new remove();
 			class remove extends JFrame{
-				private JLabel la=new JLabel("Choose one what method do you want to search?");
+				private JLabel la=new JLabel("Choose what method you want to search?");
 				private JLabel la1=new JLabel("");
 				private JButton n =new JButton("Name");
 				private JButton i =new JButton("ISBN");
@@ -354,7 +357,7 @@ String sql="insert into Book(Name,ISBN) values('"+a+"','"+b+"')";
 				                        
 				                        // 執行 SQL 指令
 
-				                        ResultSet rs=stmt.executeQuery("select * from Book");
+				                     /*  ResultSet rs=stmt.executeQuery("select * from Book");
 
 				                        //取出資料庫中的資料
 
@@ -368,8 +371,8 @@ String sql="insert into Book(Name,ISBN) values('"+a+"','"+b+"')";
 
 				                            );
 
-				                        }
-
+				                        }*/
+                                        ta.append("Success Delete"+"\n");
 				                        stmt.close();
 
 				                        conn.close();
@@ -388,6 +391,7 @@ String sql="insert into Book(Name,ISBN) values('"+a+"','"+b+"')";
 
 				              } 
 			            }
+
 			        });
 
 		}
@@ -470,7 +474,7 @@ String sql="insert into Book(Name,ISBN) values('"+a+"','"+b+"')";
 				                        
 				                        // 執行 SQL 指令
 
-				                        ResultSet rs=stmt.executeQuery("select * from Book");
+				                        /*ResultSet rs=stmt.executeQuery("select * from Book");
 
 				                        //取出資料庫中的資料
 
@@ -484,8 +488,8 @@ String sql="insert into Book(Name,ISBN) values('"+a+"','"+b+"')";
 
 				                            );
 
-				                        }
-
+				                        }*/
+				                        ta.append("Success Delete"+"\n");
 				                        stmt.close();
 
 				                        conn.close();
@@ -511,7 +515,7 @@ String sql="insert into Book(Name,ISBN) values('"+a+"','"+b+"')";
 			
 			search search=new search();
 			class search extends JFrame{
-				private JLabel la=new JLabel("Choose one what method do you want to search?");
+				private JLabel la=new JLabel("Choose what method you want to search?");
 				private JLabel la1=new JLabel("");
 				private JButton n =new JButton("Name");
 				private JButton i =new JButton("ISBN");
@@ -656,7 +660,9 @@ String sql="insert into Book(Name,ISBN) values('"+a+"','"+b+"')";
 
 				                            "書名: " + rs.getString(1) + "\n" +
 
-				                            "ISBN: " + rs.getInt(2) + "\n" 
+				                            "ISBN: " + rs.getInt(2) + "\n" +
+				                            
+				                            "State"+rs.getString(3)+"\n"
 
 				                            );
 

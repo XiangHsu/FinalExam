@@ -48,7 +48,7 @@ public class re {
 		p.add(p2);
 		p.add(p3);
 		this.add(p,BorderLayout.NORTH);
-		this.add(ta,BorderLayout.SOUTH);
+		this.add(ta,BorderLayout.CENTER);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent we) {

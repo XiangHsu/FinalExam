@@ -1,6 +1,12 @@
 package all;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import javax.swing.*;
 
 public class borrow {
@@ -17,7 +23,7 @@ public class borrow {
 	private JTextField tf=new JTextField();
 	private JLabel isbn=new JLabel("Book's ISBN:",JLabel.CENTER);
 	private JTextField tf1=new JTextField();
-	private JButton t =new JButton("Borrow");
+	private JButton b =new JButton("Borrow");
 	private JButton e =new JButton("Exit");
 	private JTextArea ta=new JTextArea();
 	private JPanel p=new JPanel();
@@ -42,13 +48,13 @@ public class borrow {
 		p2.add(isbn);
 		p2.add(tf1);
 		p3.setLayout(new GridLayout(1,2,5,5));
-		p3.add(t);
+		p3.add(b);
 		p3.add(e);
 		p.add(p1);
 		p.add(p2);
 		p.add(p3);
 		this.add(p,BorderLayout.NORTH);
-		this.add(ta,BorderLayout.SOUTH);
+		this.add(ta,BorderLayout.CENTER);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent we) {
@@ -65,9 +71,87 @@ public class borrow {
             }
         });
 
+        b.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+            	  String driver = "com.mysql.jdbc.Driver";
+
+	              String url = "jdbc:mysql://120.108.111.149:33306/104021042?useUnicode=true&characterEncoding=utf8";
+
+	              String user = "104021042";
+
+	              String password = "19970218";
+String a=tf.getText();
+String b=tf1.getText();
+String sql="insert into Book(Name,ISBN,state) values('"+a+"','"+b+"','館藏')";
+String sqladd="select * from Book where Name='"+a+"'";
+String sqlup="update Book set state='"+b+"'  where Name='"+a+"'";
+	              Connection conn = null;
+
+	              try {
+
+	                  Class.forName(driver);
+
+	                  conn = DriverManager.getConnection(url, user, password);
+
+	                  if (conn != null && !conn.isClosed()) {
+
+	                      System.out.println("資料庫連線測試成功！");
+
+	                       // 建立 statment 物件
+
+	                        Statement stmt = conn.createStatement();                 
+
+	                        //執行insert語法
+
+	                        stmt.executeUpdate(sql);                     
+	                         
+	                        
+	                        // 執行 SQL 指令
+
+	                        ResultSet rs=stmt.executeQuery(sqladd);
+
+	                        //取出資料庫中的資料
+
+	                        while (rs.next()) {                
+
+	                          ta.append(
+
+	                            "Name:: " + rs.getString(1) + "\n" +
+
+	                            "ISBN: " + rs.getString(2) + "\n"  +
+	                            
+	                            "State: "+rs.getString(3) +  "\n"
+
+	                            );
+
+	                        }
+
+	                        stmt.close();
+
+	                        conn.close();
+
+	                  }
+
+	              } catch (ClassNotFoundException e) {
+
+	                  System.out.println("找不到驅動程式類別");
+
+	                  e.printStackTrace();
+
+	              } catch (SQLException e) {
+
+	                  e.printStackTrace();
+
+	              }
+
+	
+
+	          }
+	        });
+
+	}
 
 
 
 
 	}
-}
