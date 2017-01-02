@@ -81,7 +81,7 @@ t.addActionListener(new ActionListener(){
         String password = "19970218";
 String a=tf.getText();
 String b=tf1.getText();
-String sqlbr="update `"+a+"`"+" set book='"+b+"'";
+String sqlbr="delete from `"+a+"`"+"where book='"+b+"'";
 String sqlup="update Book set state='"+a+"'"+"where ISBN='"+b+"'";
 String sql="select * from Book where ISBN='"+b+"'";
 String sql1="select * from `"+a+"`";

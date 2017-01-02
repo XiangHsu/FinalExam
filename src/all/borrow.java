@@ -82,7 +82,7 @@ public class borrow {
 	              String password = "19970218";
 String a=tf.getText();
 String b=tf1.getText();
-String sqlbr="insert into `"+a+"`"+"(ID,PW,book) values('','','"+b+"')";
+String sqlbr="insert into `"+a+"`"+"(ID,PW,book) values('"+a+"','','"+b+"')";
 //String sqlbr="update `"+a+"`"+" set book='"+b+"'";
 String sqlup="update Book set state='"+a+"'"+"where ISBN='"+b+"'";
 String sql="select * from Book where ISBN='"+b+"'";
