@@ -82,9 +82,12 @@ public class borrow {
 	              String password = "19970218";
 String a=tf.getText();
 String b=tf1.getText();
-String sql="insert into Book(Name,ISBN,state) values('"+a+"','"+b+"','館藏')";
-String sqladd="select * from Book where Name='"+a+"'";
-String sqlup="update Book set state='"+b+"'  where Name='"+a+"'";
+String sqlbr="insert into `"+a+"`"+"(ID,PW,book) values('','','"+b+"')";
+//String sqlbr="update `"+a+"`"+" set book='"+b+"'";
+String sqlup="update Book set state='"+a+"'"+"where ISBN='"+b+"'";
+String sql="select * from Book where ISBN='"+b+"'";
+String sql1="select * from `"+a+"`"+"where book='"+b+"'";
+
 	              Connection conn = null;
 
 	              try {
@@ -103,12 +106,83 @@ String sqlup="update Book set state='"+b+"'  where Name='"+a+"'";
 
 	                        //執行insert語法
 
-	                        stmt.executeUpdate(sql);                     
+	                        stmt.executeUpdate(sqlbr);                     
 	                         
+
+	                        stmt.close();
+
+	                        conn.close();
+
+	                  }
+
+	              } catch (ClassNotFoundException e) {
+
+	                  System.out.println("找不到驅動程式類別");
+
+	                  e.printStackTrace();
+
+	              } catch (SQLException e) {
+
+	                  e.printStackTrace();
+
+	              }
+
+
+	              try {
+
+	                  Class.forName(driver);
+
+	                  conn = DriverManager.getConnection(url, user, password);
+
+	                  if (conn != null && !conn.isClosed()) {
+
+	                      System.out.println("資料庫連線測試成功！");
+
+	                       // 建立 statment 物件
+
+	                        Statement stmt = conn.createStatement();                 
+
+	                        //執行insert語法
+
+	                        stmt.executeUpdate(sqlup);                     
+	                     
+
+	                        stmt.close();
+
+	                        conn.close();
+
+	                  }
+
+	              } catch (ClassNotFoundException e) {
+
+	                  System.out.println("找不到驅動程式類別");
+
+	                  e.printStackTrace();
+
+	              } catch (SQLException e) {
+
+	                  e.printStackTrace();
+
+	              }
+
+	              try {
+
+	                  Class.forName(driver);
+
+	                  conn = DriverManager.getConnection(url, user, password);
+
+	                  if (conn != null && !conn.isClosed()) {
+
+	                      System.out.println("資料庫連線測試成功！");
+
+	                       // 建立 statment 物件
+
+	                        Statement stmt = conn.createStatement();                 
+
 	                        
 	                        // 執行 SQL 指令
 
-	                        ResultSet rs=stmt.executeQuery(sqladd);
+	                        ResultSet rs=stmt.executeQuery(sql);
 
 	                        //取出資料庫中的資料
 
@@ -116,7 +190,9 @@ String sqlup="update Book set state='"+b+"'  where Name='"+a+"'";
 
 	                          ta.append(
 
-	                            "Name:: " + rs.getString(1) + "\n" +
+	                        	"Book: "+"\n"+
+	                        		  
+	                            "Name: " + rs.getString(1) + "\n" +
 
 	                            "ISBN: " + rs.getString(2) + "\n"  +
 	                            
@@ -143,8 +219,59 @@ String sqlup="update Book set state='"+b+"'  where Name='"+a+"'";
 	                  e.printStackTrace();
 
 	              }
-
 	
+	              
+	              try {
+
+	                  Class.forName(driver);
+
+	                  conn = DriverManager.getConnection(url, user, password);
+
+	                  if (conn != null && !conn.isClosed()) {
+
+	                      System.out.println("資料庫連線測試成功！");
+
+	                       // 建立 statment 物件
+
+	                        Statement stmt = conn.createStatement();                 
+
+	                        // 執行 SQL 指令
+
+	                        ResultSet rs=stmt.executeQuery(sql1);
+
+	                        //取出資料庫中的資料
+
+	                        while (rs.next()) {                
+
+	                          ta.append(
+                                "Member: "+"\n"+
+	                        		  
+	                            "Name: " + rs.getString(1) + "\n" +
+
+	                            "Book's ISBN: " + rs.getString(3) + "\n" 
+
+
+	                            );
+
+	                        }
+
+	                        stmt.close();
+
+	                        conn.close();
+
+	                  }
+
+	              } catch (ClassNotFoundException e) {
+
+	                  System.out.println("找不到驅動程式類別");
+
+	                  e.printStackTrace();
+
+	              } catch (SQLException e) {
+
+	                  e.printStackTrace();
+
+	              }
 
 	          }
 	        });

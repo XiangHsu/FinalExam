@@ -778,8 +778,9 @@ String sqladd="select * from Book where Name='"+a+"'";
 
 				                            "®Ñ¦W: " + rs.getString(1) + "\n" +
 
-				                            "ISBN: " + rs.getInt(2) + "\n" 
+				                            "ISBN: " + rs.getInt(2) + "\n" +
 
+				                            "State: "+rs.getString(3)
 				                            );
 
 				                        }

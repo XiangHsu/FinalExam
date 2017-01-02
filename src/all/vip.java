@@ -137,8 +137,9 @@ public class vip {
 				              String password = "19970218";
 			String a=jtfid.getText();
 			String b=jtfpw.getText();
-			//String sqlcreate="CREATE TABLE "+a+"(ID TEXT(20), PW TEXT(20), book TEXT(20))";
-			String sql="select * from Book  where Name='"+b+"'";
+			String sqlcreate="create table `"+a+"`"+"(ID TEXT(20), PW TEXT(20), book TEXT(20))";
+			String success="Success Register!!!";
+			String sql="select * from `"+a+"`";
 			
 			
 				              Connection conn = null;
@@ -158,8 +159,8 @@ public class vip {
 				                        Statement stmt = conn.createStatement();                 
                                         
 				                        //執行insert語法
-                                      //stmt.executeUpdate(sql);
-				                        //stmt.executeUpdate(sql);                     
+                                      stmt.executeUpdate(sqlcreate);
+				                     // stmt.executeUpdate(sql);                     
 				                         
 				                        
 				                        // 執行 SQL 指令
@@ -171,17 +172,16 @@ public class vip {
 				                        while (rs.next()) {                
 
 				                          ta.append(
-
+				                        		  
+                                            success+
+                                             
 				                            "ID: " + rs.getString(1) + "\n" +
 
-				                            "PW: " + rs.getString(2) + "\n"  +
-				                            
-				                            "State: "+rs.getString(3) +  "\n"
+				                            "PW: " + rs.getString(2) + "\n"
 
 				                            );
-
 				                        }
-
+                                    
 				                        stmt.close();
 
 				                        conn.close();
@@ -229,6 +229,7 @@ public class vip {
 				 private JPanel jpn3 = new JPanel();
 				 private JPanel jpn4 = new JPanel();
 				 String id , pw;
+				 private TextArea ta=new TextArea();
 				
 				public remove(){
 					initComp();
@@ -262,11 +263,65 @@ public class vip {
 					jpn4.add(jbtnok);
 					jbtnok.addActionListener(new ActionListener(){
 						public void actionPerformed(ActionEvent ae){
-							id = jtfid.getText();
-							pw = jtfpw.getText();
-							//System.out.println(id+pw);
-						}
-					});
+							 String driver = "com.mysql.jdbc.Driver";
+
+				              String url = "jdbc:mysql://120.108.111.149:33306/104021042?useUnicode=true&characterEncoding=utf8";
+
+				              String user = "104021042";
+
+				              String password = "19970218";
+			String a=jtfid.getText();
+			String b=jtfpw.getText();
+			String sqlcreate="drop table `"+a+"`";
+			
+			
+			
+				              Connection conn = null;
+
+				              try {
+
+				                  Class.forName(driver);
+
+				                  conn = DriverManager.getConnection(url, user, password);
+
+				                  if (conn != null && !conn.isClosed()) {
+
+				                      System.out.println("資料庫連線測試成功！");
+
+				                       // 建立 statment 物件
+
+				                        Statement stmt = conn.createStatement();                 
+                                       
+				                        //執行insert語法
+                                     stmt.executeUpdate(sqlcreate);                      
+				                        
+				                        // 執行 SQL 指令
+    
+                                     ta.append("Success Delete");
+                                     
+				                        stmt.close();
+
+				                        conn.close();
+
+				                  }
+
+				              } catch (ClassNotFoundException e) {
+
+				                  System.out.println("找不到驅動程式類別");
+
+				                  e.printStackTrace();
+
+				              } catch (SQLException e) {
+
+				                  e.printStackTrace();
+
+				              }
+
+				
+
+				          }
+				        });
+	
 					jpn4.add(jbtnc);
 					jbtnc.addActionListener(new ActionListener(){
 						public void actionPerformed(ActionEvent ae){

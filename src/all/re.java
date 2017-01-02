@@ -1,6 +1,12 @@
 package all;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import javax.swing.*;
 
 public class re {
@@ -64,6 +70,220 @@ public class re {
             }
         });
 
+t.addActionListener(new ActionListener(){
+	public void actionPerformed(ActionEvent ae){
+		String driver = "com.mysql.jdbc.Driver";
+
+        String url = "jdbc:mysql://120.108.111.149:33306/104021042?useUnicode=true&characterEncoding=utf8";
+
+        String user = "104021042";
+
+        String password = "19970218";
+String a=tf.getText();
+String b=tf1.getText();
+String sqlbr="update `"+a+"`"+" set book='"+b+"'";
+String sqlup="update Book set state='"+a+"'"+"where ISBN='"+b+"'";
+String sql="select * from Book where ISBN='"+b+"'";
+String sql1="select * from `"+a+"`";
+
+        Connection conn = null;
+
+        try {
+
+            Class.forName(driver);
+
+            conn = DriverManager.getConnection(url, user, password);
+
+            if (conn != null && !conn.isClosed()) {
+
+                System.out.println("資料庫連線測試成功！");
+
+                 // 建立 statment 物件
+
+                  Statement stmt = conn.createStatement();                 
+
+                  //執行insert語法
+
+                  stmt.executeUpdate(sqlbr);                     
+                   
+
+                  stmt.close();
+
+                  conn.close();
+
+            }
+
+        } catch (ClassNotFoundException e) {
+
+            System.out.println("找不到驅動程式類別");
+
+            e.printStackTrace();
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+
+        }
+
+
+        try {
+
+            Class.forName(driver);
+
+            conn = DriverManager.getConnection(url, user, password);
+
+            if (conn != null && !conn.isClosed()) {
+
+                System.out.println("資料庫連線測試成功！");
+
+                 // 建立 statment 物件
+
+                  Statement stmt = conn.createStatement();                 
+
+                  //執行insert語法
+
+                  stmt.executeUpdate(sqlup);                     
+               
+
+                  stmt.close();
+
+                  conn.close();
+
+            }
+
+        } catch (ClassNotFoundException e) {
+
+            System.out.println("找不到驅動程式類別");
+
+            e.printStackTrace();
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+
+        }
+
+        try {
+
+            Class.forName(driver);
+
+            conn = DriverManager.getConnection(url, user, password);
+
+            if (conn != null && !conn.isClosed()) {
+
+                System.out.println("資料庫連線測試成功！");
+
+                 // 建立 statment 物件
+
+                  Statement stmt = conn.createStatement();                 
+
+                  //執行insert語法
+
+                  stmt.executeUpdate(sqlbr);                     
+                   
+                  
+                  // 執行 SQL 指令
+
+                  ResultSet rs=stmt.executeQuery(sql);
+
+                  //取出資料庫中的資料
+
+                  while (rs.next()) {                
+
+                    ta.append(
+
+                  	"Book: "+"\n"+
+                  		  
+                      "Name: " + rs.getString(1) + "\n" +
+
+                      "ISBN: " + rs.getString(2) + "\n"  +
+                      
+                      "State: "+rs.getString(3) +  "\n"
+
+                      );
+
+                  }
+
+                  stmt.close();
+
+                  conn.close();
+
+            }
+
+        } catch (ClassNotFoundException e) {
+
+            System.out.println("找不到驅動程式類別");
+
+            e.printStackTrace();
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+
+        }
+
+        
+        try {
+
+            Class.forName(driver);
+
+            conn = DriverManager.getConnection(url, user, password);
+
+            if (conn != null && !conn.isClosed()) {
+
+                System.out.println("資料庫連線測試成功！");
+
+                 // 建立 statment 物件
+
+                  Statement stmt = conn.createStatement();                 
+
+                  //執行insert語法
+
+                  stmt.executeUpdate(sqlbr);                     
+                   
+                  
+                  // 執行 SQL 指令
+
+                  ResultSet rs=stmt.executeQuery(sql1);
+
+                  //取出資料庫中的資料
+
+                  while (rs.next()) {                
+
+                    ta.append(
+                      "Member: "+"\n"+
+                  		  
+                      "Name: " + rs.getString(1) + "\n" +
+
+                      "Book: " + rs.getString(3) + "\n" 
+
+
+                      );
+
+                  }
+
+                  stmt.close();
+
+                  conn.close();
+
+            }
+
+        } catch (ClassNotFoundException e) {
+
+            System.out.println("找不到驅動程式類別");
+
+            e.printStackTrace();
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+
+        }
+
+
+
+      }
+    });
 
 
 
