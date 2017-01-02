@@ -18,7 +18,7 @@ public class vip {
 	}
 }
 		class MainFrame4 extends JFrame{
-			private JLabel lab=new JLabel("VIP");
+			private JLabel lab=new JLabel("Member");
 			private JLabel la=new JLabel();
 			private JButton a=new JButton("Add");
 			private JButton r =new JButton("Remove");
@@ -138,7 +138,7 @@ public class vip {
 			String a=jtfid.getText();
 			String b=jtfpw.getText();
 			String sqlcreate="create table `"+a+"`"+"(ID TEXT(20), PW TEXT(20), book TEXT(20))";
-			String sql1="insert into `"+a+"`"+"(ID,PW,book) values('"+a+"','"+b+"',)";
+			String sql1="insert into `"+a+"`"+"(ID,PW,book) values('"+a+"','"+b+"',null)";
 			String success="Success Register!!!"+"\n";
 			String sql="select * from `"+a+"`";
 			

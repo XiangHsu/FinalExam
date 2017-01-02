@@ -24,7 +24,7 @@ public class home extends Book{
 			private JLabel la=new JLabel("");
 			private JButton b =new JButton("Borrow");
 			private JButton r=new JButton("Return");
-			private JButton v =new JButton("VIP");
+			private JButton v =new JButton("Member");
 			private JButton bk =new JButton("Books");
 			private JButton e =new JButton("Exit");
 			private JPanel p=new JPanel();
