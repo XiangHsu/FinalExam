@@ -662,7 +662,7 @@ String sqladd="select * from Book where Name='"+a+"'";
 
 				                            "ISBN: " + rs.getInt(2) + "\n" +
 				                            
-				                            "State"+rs.getString(3)+"\n"
+				                            "State: "+rs.getString(3)+"\n"
 
 				                            );
 
