@@ -1,11 +1,7 @@
 package all;
 import java.awt.*;
 import java.awt.event.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.*;
 import javax.swing.*;
 
@@ -18,7 +14,7 @@ public class vip {
 	}
 }
 		class MainFrame4 extends JFrame{
-			private JLabel lab=new JLabel("Member");
+			private JLabel lab=new JLabel("MEMBER");
 			private JLabel la=new JLabel();
 			private JButton a=new JButton("Add");
 			private JButton r =new JButton("Remove");
@@ -93,8 +89,7 @@ public class vip {
 				 private JPanel jpn2 = new JPanel();
 				 private JPanel jpn3 = new JPanel();
 				 private JPanel jpn4 = new JPanel();
-				 String id , pw;
-				 private TextArea ta=new TextArea();
+				 private TextArea ta = new TextArea();
 				
 				public add(){
 					initComp();
@@ -122,124 +117,56 @@ public class vip {
 					jpn3.setLayout(new GridLayout(1,2,5,5));
 					jpn3.add(jlbpw);
 					jpn3.add(jtfpw);
+					
 					this.add(ta,BorderLayout.CENTER);
 					this.add(jpn4, BorderLayout.SOUTH);
 					jpn4.setLayout(new GridLayout(1,2,5,5));
 					jpn4.add(jbtnok);
 					jbtnok.addActionListener(new ActionListener(){
 						public void actionPerformed(ActionEvent ae){
-							 String driver = "com.mysql.jdbc.Driver";
-
-				              String url = "jdbc:mysql://120.108.111.149:33306/104021042?useUnicode=true&characterEncoding=utf8";
-
-				              String user = "104021042";
-
-				              String password = "19970218";
-			String a=jtfid.getText();
-			String b=jtfpw.getText();
-			String sqlcreate="create table `"+a+"`"+"(ID TEXT(20), PW TEXT(20), book TEXT(20))";
-			String sql1="insert into `"+a+"`"+"(ID,PW,book) values('"+a+"','"+b+"',null)";
-			String success="Success Register!!!"+"\n";
-			String sql="select * from `"+a+"`";
-			
-			
-				              Connection conn = null;
-
-				              try {
-
-				                  Class.forName(driver);
-
-				                  conn = DriverManager.getConnection(url, user, password);
-
-				                  if (conn != null && !conn.isClosed()) {
-
-				                      System.out.println("資料庫連線測試成功！");
-
-				                       // 建立 statment 物件
-
-				                        Statement stmt = conn.createStatement();                 
-                                        
-				                        //執行insert語法
-                                      stmt.executeUpdate(sqlcreate);
-				                     // stmt.executeUpdate(sql);                     
-				                         
-				                     
-                                    
-				                        stmt.close();
-
-				                        conn.close();
-
-				                  }
-
-				              } catch (ClassNotFoundException e) {
-
-				                  System.out.println("找不到驅動程式類別");
-
-				                  e.printStackTrace();
-
-				              } catch (SQLException e) {
-
-				                  e.printStackTrace();
-
-				              }
-
-				              try {
-
-				                  Class.forName(driver);
-
-				                  conn = DriverManager.getConnection(url, user, password);
-
-				                  if (conn != null && !conn.isClosed()) {
-
-				                      System.out.println("資料庫連線測試成功！");
-
-				                       // 建立 statment 物件
-
-				                        Statement stmt = conn.createStatement();                 
-                                        
-				                        //執行insert語法
-                                      stmt.executeUpdate(sql1);
-                    
-                                      
-				                        // 執行 SQL 指令
-
-				                        ResultSet rs=stmt.executeQuery(sql);
-
-				                        //取出資料庫中的資料
-
-				                        while (rs.next()) {                
-
-				                          ta.append(
-				                        		  
-                                          success+
-                                           
-				                            "ID: " + rs.getString(1) + "\n" +
-
-				                            "PW: " + rs.getString(2) + "\n"
-
-				                            );
-				                        }
-
-                                    
-				                        stmt.close();
-
-				                        conn.close();
-
-				                  }
-
-				              } catch (ClassNotFoundException e) {
-
-				                  System.out.println("找不到驅動程式類別");
-
-				                  e.printStackTrace();
-
-				              } catch (SQLException e) {
-
-				                  e.printStackTrace();
-
-				              }
-				
-
+							Connection conn = null;
+							String url = "jdbc:mysql://120.108.111.149:33306/104021042?user=104021042&password=19970218";
+							String ID = jtfid.getText();
+							String PW = jtfpw.getText();
+							String success="Register Successful!!!"+"\n";
+							String create="CREATE TABLE `"+ID+"`"+"(ID TEXT(20), PW TEXT(20), book TEXT(20))";
+							String insert="INSERT INTO `"+ID+"`"+"(ID,PW,book) values('"+ID+"','"+PW+"',null)";
+							String select="SELECT * FROM `"+ID+"`";
+							try{
+					            Class.forName("com.mysql.jdbc.Driver");
+					            System.out.println("連接成功MySQLToJava");
+					            conn = DriverManager.getConnection(url);
+					            System.out.println("連接成功MySQL");
+					            Statement stmt = conn.createStatement();
+								stmt.executeUpdate(create);
+								stmt.close();
+								conn.close();
+							}catch(ClassNotFoundException e){
+					        	System.out.println("找不到驅動程式類別");
+				                e.printStackTrace();
+					        }catch(Exception e){
+					        	e.printStackTrace();
+					        }
+							
+							try{
+					            Class.forName("com.mysql.jdbc.Driver");
+					            System.out.println("連接成功MySQLToJava");
+					            conn = DriverManager.getConnection(url);
+					            System.out.println("連接成功MySQL");
+					            Statement stmt = conn.createStatement();
+					            stmt.executeUpdate(insert);
+								ResultSet rs=stmt.executeQuery(select);
+								while (rs.next()) {
+									ta.append(success+"\n"+"ID:"+rs.getString(1)+"\n");
+								}
+								stmt.close();
+								conn.close();
+					        }catch(ClassNotFoundException e){
+					        	System.out.println("找不到驅動程式類別");
+				                e.printStackTrace();
+					        }catch(Exception e){
+					        	e.printStackTrace();
+					        }
 				          }
 				        });
 
@@ -266,8 +193,7 @@ public class vip {
 				 private JPanel jpn2 = new JPanel();
 				 private JPanel jpn3 = new JPanel();
 				 private JPanel jpn4 = new JPanel();
-				 String id , pw;
-				 private TextArea ta=new TextArea();
+				 private TextArea ta = new TextArea();
 				
 				public remove(){
 					initComp();
@@ -295,71 +221,37 @@ public class vip {
 					jpn3.setLayout(new GridLayout(1,2,5,5));
 					jpn3.add(jlbpw);
 					jpn3.add(jtfpw);
+					
 					this.add(ta,BorderLayout.CENTER);
 					this.add(jpn4, BorderLayout.SOUTH);
 					jpn4.setLayout(new GridLayout(1,2,5,5));
 					jpn4.add(jbtnok);
 					jbtnok.addActionListener(new ActionListener(){
 						public void actionPerformed(ActionEvent ae){
-							 String driver = "com.mysql.jdbc.Driver";
-
-				              String url = "jdbc:mysql://120.108.111.149:33306/104021042?useUnicode=true&characterEncoding=utf8";
-
-				              String user = "104021042";
-
-				              String password = "19970218";
-			String a=jtfid.getText();
-			String b=jtfpw.getText();
-			String sqlcreate="drop table `"+a+"`";
-			
-			
-			
-				              Connection conn = null;
-
-				              try {
-
-				                  Class.forName(driver);
-
-				                  conn = DriverManager.getConnection(url, user, password);
-
-				                  if (conn != null && !conn.isClosed()) {
-
-				                      System.out.println("資料庫連線測試成功！");
-
-				                       // 建立 statment 物件
-
-				                        Statement stmt = conn.createStatement();                 
-                                       
-				                        //執行insert語法
-                                     stmt.executeUpdate(sqlcreate);                      
-				                        
-				                        // 執行 SQL 指令
-    
-                                     ta.append("Success Delete!!!"+"GoodBye~~");
-                                     
-				                        stmt.close();
-
-				                        conn.close();
-
-				                  }
-
-				              } catch (ClassNotFoundException e) {
-
-				                  System.out.println("找不到驅動程式類別");
-
-				                  e.printStackTrace();
-
-				              } catch (SQLException e) {
-
-				                  e.printStackTrace();
-
-				              }
-
-				
-
-				          }
-				        });
-	
+							Connection conn = null;
+					        try{
+					            Class.forName("com.mysql.jdbc.Driver");
+					            System.out.println("連接成功MySQLToJava");
+					            String url = "jdbc:mysql://120.108.111.149:33306/104021042?user=104021042&password=19970218";
+					            conn = DriverManager.getConnection(url);
+					            System.out.println("連接成功MySQL");
+					            Statement stmt = conn.createStatement();
+					            String ID = jtfid.getText();
+								String PW = jtfpw.getText();
+								String success = "Delete Successful!!!";
+								String delete="DROP TABLE `"+ID+"`";
+								stmt.executeUpdate(delete);
+								ta.append(success+"\n"+"ID:"+ID+"\n");
+								stmt.close();
+								conn.close();
+					        }catch(ClassNotFoundException e){
+					        	System.out.println("找不到驅動程式類別");
+				                e.printStackTrace();
+					        }catch(Exception e){
+					        	e.printStackTrace();
+					        }
+						}
+					});
 					jpn4.add(jbtnc);
 					jbtnc.addActionListener(new ActionListener(){
 						public void actionPerformed(ActionEvent ae){
@@ -382,9 +274,8 @@ public class vip {
 				 private JPanel jpn2 = new JPanel();
 				 private JPanel jpn3 = new JPanel();
 				 private JPanel jpn4 = new JPanel();
-				 String id , pw;
-				private TextArea ta=new TextArea();
-				 
+				 private TextArea ta = new TextArea();
+				
 				public search(){
 					initComp();
 				}
@@ -418,70 +309,27 @@ public class vip {
 					jpn4.add(jbtnok);
 					jbtnok.addActionListener(new ActionListener(){
 						public void actionPerformed(ActionEvent ae){
-							String driver = "com.mysql.jdbc.Driver";
-
-				              String url = "jdbc:mysql://120.108.111.149:33306/104021042?useUnicode=true&characterEncoding=utf8";
-
-				              String user = "104021042";
-
-				              String password = "19970218";
-				              String a=jtfid.getText();
-				 
-                         String sql="select * from `"+a+"`";
-                        
-				              Connection conn = null;
-
-				              try {
-
-				                  Class.forName(driver);
-
-				                  conn = DriverManager.getConnection(url, user, password);
-
-				       
-
-				                  if (conn != null && !conn.isClosed()) {
-
-				                      System.out.println("資料庫連線測試成功！");
-
-				                       // 建立 statment 物件
-
-				                        Statement stmt = conn.createStatement();
-
-				                        // 執行 SQL 指令
-
-				                        ResultSet rs=stmt.executeQuery(sql);
-
-				                        //取出資料庫中的資料
-
-				                        while (rs.next()) {                
-
-				                          ta.append(
-
-				                            "Book: "+rs.getString(3)+"\n"+
-				                            "------------------------------------"+"\n"
-
-				                            );
-
-				                        }
-
-				                        stmt.close();
-
-				                        conn.close();
-
-				                  }
-
-				              } catch (ClassNotFoundException e) {
-
-				                  System.out.println("找不到驅動程式類別");
-
-				                  e.printStackTrace();
-
-				              } catch (SQLException e) {
-
-				                  e.printStackTrace();
-
-				              }
-
+							Connection conn = null;
+					        try{
+					            Class.forName("com.mysql.jdbc.Driver");
+					            System.out.println("連接成功MySQLToJava");
+					            String url = "jdbc:mysql://120.108.111.149:33306/104021042?user=104021042&password=19970218";
+					            conn = DriverManager.getConnection(url);
+					            System.out.println("連接成功MySQL");
+					            Statement stmt = conn.createStatement();
+					            String ID = jtfid.getText();
+								String PW = jtfpw.getText();
+								String select = "SELECT * FROM `"+ID+"`";
+								stmt.executeQuery(select);
+								ta.append("此會員存在!");
+								stmt.close();
+								conn.close();
+					        }catch(ClassNotFoundException e){
+					        	System.out.println("找不到驅動程式類別");
+				                e.printStackTrace();
+					        }catch(Exception e){
+					        	e.printStackTrace();
+					        }
 						}
 					});
 					jpn4.add(jbtnc);
