@@ -22,6 +22,7 @@ public class book {
 			private JButton a=new JButton("Add");
 			private JButton r =new JButton("Remove");
 			private JButton s=new JButton("Search");
+			private JButton sa=new JButton("Show All");
 			private JButton e =new JButton("Exit");
 			private JPanel p=new JPanel();
 			private JPanel p1=new JPanel();
@@ -72,10 +73,19 @@ public class book {
 				}
 				});
 				
-				p.setLayout(new GridLayout(1,4,50,50));
+				sa.addActionListener(new ActionListener(){
+			          public void actionPerformed(ActionEvent ae){
+			        	  MainFrame5.this.setVisible(false);
+			        	  showall.setVisible(true);
+                  
+				}
+				});
+				
+				p.setLayout(new GridLayout(1,5,50,50));
 		        p.add(a);
 		        p.add(r);
 		        p.add(s);
+		        p.add(sa);
 		        p.add(e);
 		        this.add(p, BorderLayout.CENTER);
 		        p1.add(lab);
@@ -805,8 +815,128 @@ String sqladd="select * from Book where Name='"+a+"'";
 
 			            }
 			        });
-
-		}
+				}
 			}
+					showall showall=new showall();
+					class showall extends JFrame{
+						private JLabel la=new JLabel("");
+						//private JLabel n=new JLabel("Show All:",JLabel.CENTER);
+						//private JTextField tf=new JTextField();
+						private JButton s =new JButton("Show All");
+						private JButton e =new JButton("Exit");
+						private JTextArea jta=new JTextArea();
+						private JPanel p=new JPanel();
+						private JPanel p1=new JPanel();
+						private JPanel p2=new JPanel();
+						private JPanel p3=new JPanel();
+						private JPanel p4=new JPanel();
+						private JScrollPane sp = new JScrollPane(jta);;
+				        
+						Scanner scn = new Scanner(System.in);
+						
+						public showall(){
+							initComp();
+						}
+						
+						private void initComp(){
+						//jp.setHorizontalScrollBarPolicy( JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); 
+				       // jp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED); 
+							this.setTitle("Library System");
+							this.setLayout(new BorderLayout(5,5));
+							this.setLocation(550,330);
+							this.setSize(700, 400);	
+							p.setLayout(new GridLayout(1,1,50,50));
+							p3.setLayout(new GridLayout(1,2,5,5));
+							p3.add(s);
+							p3.add(e);
+							p.add(p3);
+							this.add(p,BorderLayout.NORTH);
+							this.add(sp,BorderLayout.CENTER);
+							this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+							
+							
+							
+							e.addActionListener(new ActionListener(){
+					             public void actionPerformed(ActionEvent ae){
+					            	 showall.this.dispose();
+					            	 MainFrame5.this.setVisible(true);
+					            }
+					        });
+							s.addActionListener(new ActionListener(){
+					             public void actionPerformed(ActionEvent ae){
+					            	 String driver = "com.mysql.jdbc.Driver";
+
+						              String url = "jdbc:mysql://120.108.111.149:33306/104021042?useUnicode=true&characterEncoding=utf8";
+
+						              String user = "104021042";
+
+						              String password = "19970218";
+						             // String a=tf.getText();
+						 
+		                           String sql2="select * from Book ";
+		                          
+						              Connection conn = null;
+
+						              try {
+
+						                  Class.forName(driver);
+
+						                  conn = DriverManager.getConnection(url, user, password);
+
+						       
+
+						                  if (conn != null && !conn.isClosed()) {
+
+						                      System.out.println("資料庫連線測試成功！");
+
+						                       // 建立 statment 物件
+
+						                        Statement stmt = conn.createStatement();
+
+						                        // 執行 SQL 指令
+
+						                        ResultSet rs=stmt.executeQuery(sql2);
+
+						                        //取出資料庫中的資料
+
+						                        while (rs.next()) {                
+
+						                          jta.append(
+
+						                            "書名: " + rs.getString(1) + "\n" +
+
+						                            "ISBN: " + rs.getInt(2) + "\n" +
+						                            
+						                            "State: "+rs.getString(3)+"\n"+
+						                            
+						                            "-----------------------"+"\n"
+
+						                            );
+
+						                        }
+
+						                        stmt.close();
+
+						                        conn.close();
+
+						                  }
+
+						              } catch (ClassNotFoundException e) {
+
+						                  System.out.println("找不到驅動程式類別");
+
+						                  e.printStackTrace();
+
+						              } catch (SQLException e) {
+
+						                  e.printStackTrace();
+
+						              }
+
+					            }
+					        });
+
+				}
+					}
 			
 		 }
