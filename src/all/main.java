@@ -69,8 +69,8 @@ class Welcome extends JFrame{
 					jdp.add(jtf1);
 					jtf1.setVisible(true);
 					Welcome.this.setVisible(false);
-					MainFrame home=new MainFrame();
-					home.setVisible(true);
+					Frame lo=new Frame();
+					lo.setVisible(true);
 				}
 				}
 				});
