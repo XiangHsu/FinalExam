@@ -64,7 +64,3 @@ $RECYCLE.BIN/
 /bin/
 
 src/vipdb.java
-
-.settings/org.eclipse.core.resources.prefs
-
-.classpath
