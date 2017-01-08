@@ -31,7 +31,8 @@ public class main {
 		Welcome mf=new Welcome();
 		mf.setVisible(true);
 	}
-}class Welcome extends JFrame{
+}
+class Welcome extends JFrame{
 	private Container cp;
 	private Container jifcp;
 	private JScrollPane jsp;
