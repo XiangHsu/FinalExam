@@ -1,4 +1,4 @@
-package all;
+package all00;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
