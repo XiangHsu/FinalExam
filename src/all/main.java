@@ -1,4 +1,4 @@
-package all00;
+package all;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -22,7 +22,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import all00.dbc;
 
 public class main {
 
