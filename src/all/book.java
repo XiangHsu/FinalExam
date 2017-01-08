@@ -232,7 +232,7 @@ String sqladd="select * from Book where Name='"+a+"'";
 			
 			remove remove=new remove();
 			class remove extends JFrame{
-				private JLabel la=new JLabel("Choose what method you want to search?");
+				private JLabel la=new JLabel("How would you like to remove?");
 				private JLabel la1=new JLabel("");
 				private JButton n =new JButton("Name");
 				private JButton i =new JButton("ISBN");
@@ -525,7 +525,7 @@ String sqladd="select * from Book where Name='"+a+"'";
 			
 			search search=new search();
 			class search extends JFrame{
-				private JLabel la=new JLabel("Choose what method you want to search?");
+				private JLabel la=new JLabel("How would you like to search?");
 				private JLabel la1=new JLabel("");
 				private JButton n =new JButton("Name");
 				private JButton i =new JButton("ISBN");

@@ -37,7 +37,7 @@ class Welcome extends JFrame{
 	private Container jifcp;
 	private JScrollPane jsp;
 	private JPanel jpnt;
-	private JButton jbtnConnDB=new JButton("Welcome"+"     "+"Library"+"     "+"System");
+	private JButton jbtnConnDB=new JButton("Press Button to Continue");
 	//private JButton jbtnShowData=new JButton("Show Data");
 	//private JButton jbtnExit=new JButton("Exit");
 	private JDesktopPane jdp=new JDesktopPane();
@@ -51,6 +51,7 @@ class Welcome extends JFrame{
 		initComp();
 	}
 	private void initComp(){
+		    this.setTitle("Welcome to Library System");
 			cp=getContentPane();
 			setBounds(200,100,600,600);
 			cp.setLayout(new BorderLayout(3,3));

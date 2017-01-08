@@ -128,9 +128,9 @@ public class vip {
 							String url = "jdbc:mysql://120.108.111.149:33306/104021042?user=104021042&password=19970218";
 							String ID = jtfid.getText();
 							String PW = jtfpw.getText();
-							String success="Register Successful!!!"+"\n";
-							String create="CREATE TABLE `"+ID+"`"+"(ID TEXT(20), PW TEXT(20), book TEXT(20))";
-							String insert="INSERT INTO `"+ID+"`"+"(ID,PW,book) values('"+ID+"','"+PW+"',null)";
+							String success="Register Successful!!!";
+							String create="CREATE TABLE `"+ID+"`"+"(ID VARCHAR(200), PW TEXT(20), book TEXT(20), PRIMARY KEY (`ID`))";
+							String insert="INSERT IGNORE INTO `"+ID+"`"+"(ID,PW,book) values('"+ID+"','"+PW+"',null)";
 							String select="SELECT * FROM `"+ID+"`";
 							try{
 					            Class.forName("com.mysql.jdbc.Driver");
@@ -139,6 +139,11 @@ public class vip {
 					            System.out.println("連接成功MySQL");
 					            Statement stmt = conn.createStatement();
 								stmt.executeUpdate(create);
+								stmt.executeUpdate(insert);
+								ResultSet rs=stmt.executeQuery(select);
+								while (rs.next()) {
+									ta.append(success+"\n"+"ID:"+rs.getString(1)+"\n"+"\n");
+								}
 								stmt.close();
 								conn.close();
 							}catch(ClassNotFoundException e){
@@ -146,26 +151,7 @@ public class vip {
 				                e.printStackTrace();
 					        }catch(Exception e){
 					        	e.printStackTrace();
-					        }
-							
-							try{
-					            Class.forName("com.mysql.jdbc.Driver");
-					            System.out.println("連接成功MySQLToJava");
-					            conn = DriverManager.getConnection(url);
-					            System.out.println("連接成功MySQL");
-					            Statement stmt = conn.createStatement();
-					            stmt.executeUpdate(insert);
-								ResultSet rs=stmt.executeQuery(select);
-								while (rs.next()) {
-									ta.append(success+"\n"+"ID:"+rs.getString(1)+"\n");
-								}
-								stmt.close();
-								conn.close();
-					        }catch(ClassNotFoundException e){
-					        	System.out.println("找不到驅動程式類別");
-				                e.printStackTrace();
-					        }catch(Exception e){
-					        	e.printStackTrace();
+					        	ta.append("ID already exists!!!"+"\n"+"\n");
 					        }
 				          }
 				        });
@@ -241,7 +227,7 @@ public class vip {
 								String success = "Delete Successful!!!";
 								String delete="DROP TABLE `"+ID+"`";
 								stmt.executeUpdate(delete);
-								ta.append(success+"\n"+"ID:"+ID+"\n");
+								ta.append(success+"\n"+"ID:"+ID+"\n"+"\n");
 								stmt.close();
 								conn.close();
 					        }catch(ClassNotFoundException e){
@@ -249,6 +235,7 @@ public class vip {
 				                e.printStackTrace();
 					        }catch(Exception e){
 					        	e.printStackTrace();
+					        	ta.append("Didn't find this ID!!!"+"\n"+"\n");
 					        }
 						}
 					});
@@ -265,9 +252,9 @@ public class vip {
 			search search = new search();
 			class search extends JFrame {
 				 private JLabel jlbid = new JLabel("Member ID:",JLabel.CENTER);
-				 private JLabel jlbpw = new JLabel("Password:",JLabel.CENTER);
+				 //private JLabel jlbpw = new JLabel("Password:",JLabel.CENTER);
 				 private JTextField jtfid = new JTextField();
-				 private JTextField jtfpw = new JTextField();
+				 //private JTextField jtfpw = new JTextField();
 				 private JButton jbtnok = new JButton("OK");
 				 private JButton jbtnc = new JButton("CANCEL");
 				 private JPanel jpn1 = new JPanel();
@@ -299,9 +286,9 @@ public class vip {
 					jpn2.add(jtfid);
 					
 					jpn1.add(jpn3);
-					jpn3.setLayout(new GridLayout(1,2,5,5));
-					jpn3.add(jlbpw);
-					jpn3.add(jtfpw);
+					jpn3.setLayout(new GridLayout(1,1,5,5));
+					//jpn3.add(jlbpw);
+					//jpn3.add(jtfpw);
 					
 					this.add(ta,BorderLayout.CENTER);
 					this.add(jpn4, BorderLayout.SOUTH);
@@ -318,10 +305,10 @@ public class vip {
 					            System.out.println("連接成功MySQL");
 					            Statement stmt = conn.createStatement();
 					            String ID = jtfid.getText();
-								String PW = jtfpw.getText();
+								//String PW = jtfpw.getText();
 								String select = "SELECT * FROM `"+ID+"`";
 								stmt.executeQuery(select);
-								ta.append("此會員存在!");
+								ta.append("ID Existence!!!"+"\n"+"\n");
 								stmt.close();
 								conn.close();
 					        }catch(ClassNotFoundException e){
@@ -329,6 +316,7 @@ public class vip {
 				                e.printStackTrace();
 					        }catch(Exception e){
 					        	e.printStackTrace();
+					        	ta.append("Didn't find this ID!!!"+"\n"+"\n");
 					        }
 						}
 					});
