@@ -795,7 +795,7 @@ String sqladd="select * from Book where Name='"+a+"'";
 
 				                            "ISBN: " + rs.getInt(2) + "\n" +
 
-				                            "State: "+rs.getString(3)
+				                            "State: "+rs.getString(3)+"\n"+"\n"
 				                            );
 
 				                        }
@@ -865,6 +865,7 @@ String sqladd="select * from Book where Name='"+a+"'";
 					             public void actionPerformed(ActionEvent ae){
 					            	 showall.this.dispose();
 					            	 MainFrame5.this.setVisible(true);
+					            	 jta.setText(null);
 					            }
 					        });
 							s.addActionListener(new ActionListener(){
