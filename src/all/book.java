@@ -201,7 +201,7 @@ String sqladd="select * from Book where Name='"+a+"'";
 
 			                            "ISBN: " + rs.getString(2) + "\n"  +
 			                            
-			                            "State: "+rs.getString(3) +  "\n"
+			                            "State: "+rs.getString(3) +  "\n"+"\n"
 
 			                            );
 
@@ -222,6 +222,8 @@ String sqladd="select * from Book where Name='"+a+"'";
 			              } catch (SQLException e) {
 
 			                  e.printStackTrace();
+			                  
+			                  ta.append("ISBN Existence!!! Please Input Again"+"\n"+"\n");
 
 			              }
 
@@ -906,7 +908,7 @@ String sqladd="select * from Book where Name='"+a+"'";
 
 						                          jta.append(
 
-						                            "®Ñ¦W: " + rs.getString(1) + "\n" +
+						                            "Name: " + rs.getString(1) + "\n" +
 
 						                            "ISBN: " + rs.getInt(2) + "\n" +
 						                            

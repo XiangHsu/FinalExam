@@ -1,21 +1,9 @@
 package all;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.TextArea;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import java.awt.*;
+import java.io.*;
+import javax.swing.*;
+import java.awt.event.*;
 
 public class login {
 
@@ -26,9 +14,9 @@ public class login {
 	}
 }
 		class Frame extends JFrame{
-			private JLabel a=new JLabel("請輸入帳號: ",JLabel.CENTER);
+			private JLabel a=new JLabel("Input ID: ",JLabel.CENTER);
 			private JTextField tf=new JTextField();
-			private JLabel b=new JLabel("請輸入密碼: ",JLabel.CENTER);
+			private JLabel b=new JLabel("Input Password: ",JLabel.CENTER);
 			private JPasswordField tf1=new JPasswordField();
 			private JButton login =new JButton("Login");
 			private JButton exit=new JButton("Exit");

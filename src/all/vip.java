@@ -130,7 +130,7 @@ public class vip {
 							String PW = jtfpw.getText();
 							String success="Register Successful!!!";
 							String create="CREATE TABLE `"+ID+"`"+"(ID VARCHAR(200), PW TEXT(20), book TEXT(20), PRIMARY KEY (`ID`))";
-							String insert="INSERT IGNORE INTO `"+ID+"`"+"(ID,PW,book) values('"+ID+"','"+PW+"',null)";
+							String insert="INSERT IGNORE INTO `"+ID+"`"+"(ID,PW,book) values('"+ID+"','"+PW+"','')";
 							String select="SELECT * FROM `"+ID+"`";
 							try{
 					            Class.forName("com.mysql.jdbc.Driver");
@@ -307,8 +307,10 @@ public class vip {
 					            String ID = jtfid.getText();
 								//String PW = jtfpw.getText();
 								String select = "SELECT * FROM `"+ID+"`";
-								stmt.executeQuery(select);
-								ta.append("ID Existence!!!"+"\n"+"\n");
+								ResultSet rs=stmt.executeQuery(select);
+								while (rs.next()) {
+									ta.append("ID: "+rs.getString(1)+"\n"+"Book: "+rs.getString(3)+"\n"+"\n");
+								}
 								stmt.close();
 								conn.close();
 					        }catch(ClassNotFoundException e){
