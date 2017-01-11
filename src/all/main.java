@@ -2,6 +2,7 @@ package all;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -50,6 +51,7 @@ class Welcome extends JFrame{
 		initComp();
 	}
 	private void initComp(){
+		jbtnConnDB.setFont(new Font("null",Font.BOLD,32));
 		    this.setTitle("Welcome to Library System");
 			cp=getContentPane();
 			setBounds(200,100,600,600);
